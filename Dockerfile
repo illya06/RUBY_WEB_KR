@@ -1,6 +1,9 @@
 # Use the Ruby 2.7.1 image from Docker Hub
 # as the base image (https://hub.docker.com/_/ruby)
-FROM ruby:2.7.1
+FROM ruby:2.7.3
+
+#installing postgres
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 # Ussing a /code directory
 WORKDIR /code
@@ -20,4 +23,4 @@ RUN apt-get update && apt-get install -y yarn
 RUN yarn install --check-files
 
 # Running rails
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD bundle exec rails s -p 3000 -b '0.0.0.0'
