@@ -1,0 +1,1 @@
+CREATE USER kr_db SUPERUSER;
